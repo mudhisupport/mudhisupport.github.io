@@ -1,14 +1,38 @@
 import { useState } from "react";
+import portrait from "../mudhi.jpeg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Sun, Moon, GitFork, Mail, ArrowUpRight,
-  MapPin, Code2, Terminal, Menu, X
-} from "lucide-react";
+  faArrowRight,
+  faBars,
+  faClock,
+  faCloud,
+  faCode,
+  faDatabase,
+  faEnvelope,
+  faFileLines,
+  faFlask,
+  faFolder,
+  faLocationDot,
+  faLaptopCode,
+  faMoon,
+  faPaperPlane,
+  faPen,
+  faSun,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
+import { Sprout } from "lucide-react";
+import javaLogo from "devicon/icons/java/java-plain.svg";
+import springLogo from "devicon/icons/spring/spring-original.svg";
+import postgresqlLogo from "devicon/icons/postgresql/postgresql-plain.svg";
+import dockerLogo from "devicon/icons/docker/docker-plain.svg";
 
 export default function Portfolio() {
   const [dark, setDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const skills = ["Java", "Spring Boot", "PostgreSQL"];
 
   const navLinks = [
     ["Home", "#home"],
@@ -19,275 +43,175 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className={dark
-      ? "dark min-h-screen"
-      : "min-h-screen"
-    }>
-      <main className="bg-white text-slate-800 dark:bg-[#0b1120] dark:text-slate-100 transition-colors duration-300">
-
-        {/* NAVIGATION */}
-        <nav className="sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-[#0b1120]/90 backdrop-blur-lg">
-          <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-
-            <a href="#home" className="text-xl font-bold tracking-tight">
-              Mudhihir<span className="text-blue-600">JZ.</span>
+    <div className={dark ? "dark" : ""}>
+      <main className="site">
+        <nav className="topbar">
+          <div className="nav-inner">
+            <a className="brand" href="#home" aria-label="Mudhihir JZ home">
+              <FontAwesomeIcon icon={faCode} />
+              <span>Mudhihir. <b>JZ</b></span>
             </a>
 
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map(([name, link]) => (
-                <a key={name} href={link}
-                  className="text-sm font-medium text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition">
+            <div className="nav-links">
+              {navLinks.map(([name, link], index) => (
+                <a className={index === 0 ? "active" : ""} key={name} href={link}>
                   {name}
                 </a>
               ))}
             </div>
 
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setDark(!dark)}
-                aria-label="Toggle dark mode"
-                className="p-2.5 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-              >
-                {dark
-                  ? <Sun size={19} className="text-amber-400" />
-                  : <Moon size={19} />}
+            <div className="nav-actions">
+              <span className="theme-divider" />
+              <button className="theme-toggle" aria-label="Toggle theme" onClick={() => setDark(!dark)}>
+                <FontAwesomeIcon icon={faSun} className="sun" />
+                <FontAwesomeIcon icon={faMoon} className="moon" />
               </button>
-
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="md:hidden p-2"
-                aria-label="Toggle navigation"
-              >
-                {menuOpen ? <X /> : <Menu />}
+              <button className="menu-button" aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}>
+                <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
               </button>
             </div>
           </div>
-
           {menuOpen && (
-            <div className="md:hidden px-6 pb-5 flex flex-col gap-4">
+            <div className="mobile-nav">
               {navLinks.map(([name, link]) => (
-                <a key={name} href={link}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-sm font-medium">
-                  {name}
-                </a>
+                <a key={name} href={link} onClick={() => setMenuOpen(false)}>{name}</a>
               ))}
             </div>
           )}
         </nav>
 
-        {/* HERO */}
-        <section id="home" className="max-w-6xl mx-auto px-6 pt-28 pb-28 md:pt-36 md:pb-36">
-
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 dark:bg-green-950/40 dark:border-green-900 px-4 py-2 text-xs font-semibold text-green-700 dark:text-green-400 mb-8">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              Available for Internships
+        <section id="home" className="hero">
+          <div className="hero-inner">
+            <div className="hero-copy">
+              <div className="availability"><i /> Available for internships</div>
+              <h1>Hi, I'm <span>Mudhihir JZ</span><br />Backend Developer to Come.</h1>
+              <p className="hero-subtitle">Currently learning Spring Boot <b>•</b> Java <b>•</b> PostgreSQL</p>
+              <div className="hero-buttons">
+                <a className="button primary" href="#projects"><FontAwesomeIcon icon={faFolder} /> View Projects <FontAwesomeIcon icon={faArrowRight} /></a>
+                <a className="button secondary" href="#contact"><FontAwesomeIcon icon={faEnvelope} /> Contact Me</a>
+              </div>
+              <div className="skill-row">
+                <span><img src={javaLogo} alt="" /> Java</span>
+                <span><img src={springLogo} alt="" /> Spring Boot</span>
+                <span><img src={postgresqlLogo} alt="" /> PostgreSQL</span>
+              </div>
+              <div className="location"><FontAwesomeIcon icon={faLocationDot} /> Zanzibar, Tanzania</div>
             </div>
 
-            <p className="text-blue-600 dark:text-blue-400 font-semibold tracking-wide mb-4">
-              HELLO, WORLD! 👋
-            </p>
-
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
-              Hi, I'm <span className="text-blue-600">Mudhihir JZ</span>
-            </h1>
-
-            <h2 className="text-2xl md:text-3xl font-semibold text-slate-600 dark:text-slate-300 mb-6">
-              Aspiring Backend Developer.
-            </h2>
-
-            <p className="text-lg leading-relaxed text-slate-500 dark:text-slate-400 max-w-2xl mb-8">
-              Currently learning Spring Boot, Java & PostgreSQL.
-              Exploring backend engineering, API development
-              and building reliable software systems.
-            </p>
-
-            <div className="flex flex-wrap gap-3 mb-10">
-              {skills.map(skill => (
-                <span key={skill}
-                  className="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium">
-                  {skill}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-4">
-              <a href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition shadow-lg shadow-blue-600/20">
-                View Projects <ArrowUpRight size={18} />
-              </a>
-
-              <a href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold transition">
-                Contact Me <Mail size={17} />
-              </a>
-            </div>
-
-            <div className="flex items-center gap-2 mt-12 text-sm text-slate-400">
-              <MapPin size={16} />
-              Zanzibar, Tanzania
+            <div className="hero-visual">
+              <div className="scribble scribble-top">〽</div>
+              <div className="hero-profile">
+                <img src={portrait} alt="Mudhihir JZ" />
+              </div>
+              <div className="shape shape-a" />
+              <div className="shape shape-b" />
             </div>
           </div>
         </section>
 
-        {/* ABOUT */}
-        <section id="about" className="bg-slate-50 dark:bg-[#101a2c] py-24">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="max-w-2xl">
-              <p className="text-blue-600 font-semibold text-sm mb-3">
-                GET TO KNOW ME
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                About Me
-              </h2>
-              <p className="text-slate-600 dark:text-slate-400 leading-8 text-lg">
-                I'm Mudhihir JZ, an aspiring backend developer
-                from Zanzibar, Tanzania. I'm currently building
-                my foundation in backend development, focusing
-                on Java, Spring Boot, PostgreSQL and REST APIs.
-                My goal is to understand how reliable software
-                systems work behind the scenes and develop
-                practical solutions through continuous learning.
-              </p>
+        <section id="about" className="section about-section">
+          <div className="about-card">
+            <div className="about-art" aria-hidden="true">
+              <FontAwesomeIcon className="about-laptop" icon={faLaptopCode} />
+              <Sprout className="plant" size={43} strokeWidth={1.7} />
+              <span className="art-code">&lt;/&gt;</span>
             </div>
-
-            <div className="grid sm:grid-cols-2 gap-5 mt-12">
+            <div className="about-copy">
+              <div className="eyebrow"><i /> GET TO KNOW ME</div>
+              <h2>About Me</h2>
+              <p>I'm Mudhihir JZ, an aspiring backend developer from Zanzibar, Tanzania. I'm currently building my foundation in backend development, focusing on Java, Spring Boot, PostgreSQL and REST APIs.</p>
+            </div>
+            <div className="about-list">
               {[
-                ["01", "Java", "Learning object-oriented programming"],
-                ["02", "Spring Boot", "Exploring backend application development"],
-                ["03", "PostgreSQL", "Learning relational database management"],
-                ["04", "REST APIs", "Understanding API design and integration"]
-              ].map(([number, title, description]) => (
-                <div key={number}
-                  className="bg-white dark:bg-[#162238] p-6 rounded-2xl border border-slate-100 dark:border-slate-800">
-                  <span className="text-blue-500 text-sm font-bold">{number}</span>
-                  <h3 className="text-xl font-bold mt-3 mb-2">{title}</h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{description}</p>
+                ["01", "Java", "Learning object-oriented programming."],
+                ["02", "Spring Boot", "Exploring backend application development."],
+                ["03", "PostgreSQL", "Learning relational database management."],
+                ["04", "REST APIs", "Understanding API design and integration."],
+              ].map(([number, title, text]) => (
+                <div className="about-item" key={number}>
+                  <b>{number}</b>
+                  <div><strong>{title}</strong><span>{text}</span></div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* PROJECTS */}
-        <section id="projects" className="max-w-6xl mx-auto px-6 py-24">
-          <p className="text-blue-600 font-semibold text-sm mb-3">
-            WHAT I'M BUILDING
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured Project
-          </h2>
-          <p className="text-slate-500 dark:text-slate-400 mb-12">
-            One project. A continuous journey of experimentation and learning.
-          </p>
-
-          <div className="max-w-3xl rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
-            <div className="bg-[#111827] p-8 md:p-12 text-white relative overflow-hidden">
-              <div className="absolute -right-10 -top-20 w-64 h-64 rounded-full border border-white/10" />
-              <div className="absolute -right-2 -top-12 w-48 h-48 rounded-full border border-white/10" />
-
-              <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center mb-8">
-                  <Terminal size={28} />
+        <section id="projects" className="section projects-section">
+          <div className="project-grid">
+            <div className="project-intro">
+              <div className="eyebrow"><i /> WHAT I'M BUILDING</div>
+              <h2>Featured Project</h2>
+              <p>One project. A continuous journey of<br />experimentation and learning.</p>
+            </div>
+            <article className="project-card">
+              <div className="flask"><FontAwesomeIcon icon={faFlask} /></div>
+              <div className="project-details">
+                <h3>KilivoLabs</h3>
+                <p>An experimental lab for microservices, REST APIs, and cloud-native backend tools. Building scalable systems with Spring Boot &amp; PostgreSQL.</p>
+                <div className="tags">
+                  <span><img src={springLogo} alt="" />Spring Boot</span>
+                  <span><img src={postgresqlLogo} alt="" />PostgreSQL</span>
+                  <span><img src={dockerLogo} alt="" />Docker</span>
                 </div>
-                <span className="text-blue-400 text-sm font-semibold tracking-widest">
-                  FEATURED PROJECT
-                </span>
-                <h3 className="text-3xl md:text-4xl font-bold mt-3">
-                  KilivoLabs<span className="text-blue-500">.</span>
-                </h3>
-                <p className="text-slate-400 mt-4 max-w-lg leading-7">
-                  Experimenting with microservices, REST APIs,
-                  and cloud-native backend tools.
-                </p>
+                <div className="project-links">
+                  <a href="https://github.com/mudhihirjz" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFolder} /> View on GitHub</a>
+                  <a href="#about">Learn More <FontAwesomeIcon icon={faArrowRight} /></a>
+                </div>
               </div>
-            </div>
-
-            <div className="p-8">
-              <p className="text-slate-600 dark:text-slate-400 leading-7 mb-7">
-                An experimental lab for microservices, REST APIs,
-                and cloud-native backend tools. Building scalable
-                systems with Spring Boot & PostgreSQL.
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-8">
-                {["Spring Boot", "PostgreSQL", "Docker"].map(tag => (
-                  <span key={tag}
-                    className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-semibold">
-                    {tag}
-                  </span>
-                ))}
+              <div className="project-art" aria-hidden="true">
+                <FontAwesomeIcon icon={faCloud} />
+                <FontAwesomeIcon icon={faDatabase} />
               </div>
-
-              <div className="flex flex-wrap gap-5">
-                <a href="#about"
-                  className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-300 font-semibold hover:text-blue-600">
-                  Learn More <ArrowUpRight size={16} />
-                </a>
-              </div>
-            </div>
+            </article>
           </div>
         </section>
 
-        {/* BLOG */}
-        <section id="blog" className="bg-slate-50 dark:bg-[#101a2c] py-20">
-          <div className="max-w-6xl mx-auto px-6">
-            <p className="text-blue-600 font-semibold text-sm mb-3">
-              MY NOTES
-            </p>
-            <h2 className="text-3xl font-bold mb-4">Blog</h2>
-            <p className="text-slate-500 dark:text-slate-400">
-              A space for sharing development insights, learning
-              experiences and technical discoveries. Articles coming soon.
-            </p>
-          </div>
-        </section>
-
-        {/* CONTACT */}
-        <section id="contact" className="max-w-6xl mx-auto px-6 py-24">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="w-14 h-14 bg-blue-100 dark:bg-blue-950 rounded-2xl flex items-center justify-center mx-auto mb-6 text-blue-600">
-              <Code2 size={28} />
+        <section id="blog" className="section blog-section">
+          <article className="blog-card">
+            <div className="blog-icon">
+              <FontAwesomeIcon icon={faFileLines} />
+              <FontAwesomeIcon className="blog-pen" icon={faPen} />
             </div>
-            <p className="text-blue-600 font-semibold text-sm mb-3">
-              LET'S CONNECT
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-5">
-              Have an opportunity?
-            </h2>
-            <p className="text-slate-500 dark:text-slate-400 leading-7 mb-8">
-              I'm open to internship opportunities, learning
-              experiences and meaningful connections within
-              the software development community.
-            </p>
-            <a href="mailto:mudhisupport@gmail.com"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-blue-700 transition">
-              Get in Touch <Mail size={18} />
-            </a>
-          </div>
+            <div className="blog-copy">
+              <div className="eyebrow"><i /> MY NOTES</div>
+              <h2>Blog</h2>
+              <p>A space for sharing development insights,<br />learning experiences and technical discoveries.</p>
+            </div>
+            <div className="soon"><FontAwesomeIcon icon={faClock} /> Articles coming soon...</div>
+          </article>
         </section>
 
-        {/* FOOTER */}
-        <footer className="border-t border-slate-200 dark:border-slate-800">
-          <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-5">
-            <p className="text-sm text-slate-500 text-center">
-              © {new Date().getFullYear()} Mudhihir JZ · Built with React & Tailwind CSS
-            </p>
+        <section id="contact" className="section contact-section">
+          <svg className="plane-trail" viewBox="0 0 220 140" aria-hidden="true">
+            <path d="M5 132 C22 109 30 88 20 73 C9 57 17 42 32 48 C47 54 42 76 56 73 C72 70 88 30 105 15" />
+          </svg>
+          <FontAwesomeIcon className="plane-art" icon={faPaperPlane} />
+          <div className="contact-copy">
+            <div className="eyebrow"><i /> LET'S CONNECT</div>
+            <h2>Have an opportunity?</h2>
+            <p>I'm open to internship opportunities, learning experiences<br />and meaningful connections within the software development community.</p>
+            <a className="button primary contact-button" href="mailto:mudhisupport@gmail.com"><FontAwesomeIcon icon={faEnvelope} /> Get in Touch</a>
+          </div>
+          <svg className="rays" viewBox="0 0 72 72" aria-hidden="true">
+            <path d="M15 56 10 34M34 52 38 22M51 55 65 39" />
+          </svg>
+        </section>
 
-            <div className="flex items-center gap-5">
-              <a href="https://github.com/mudhihirjz"
-                aria-label="GitHub" className="text-slate-500 hover:text-blue-600">
-                <GitFork size={19} />
+        <footer>
+          <div className="footer-inner">
+            <p>© 2024 Mudhihir JZ · Built with Java &amp; Spring Boot</p>
+            <div className="socials">
+              <a href="https://github.com/mudhihirjz" aria-label="GitHub">
+                <FontAwesomeIcon icon={faGithub} />
               </a>
-              <a href="mailto:mudhisupport@gmail.com"
-                aria-label="Email" className="text-slate-500 hover:text-blue-600">
-                <Mail size={19} />
+              <a href="https://linkedin.com" aria-label="LinkedIn">
+                <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
+              <a href="mailto:mudhisupport@gmail.com" aria-label="Email"><FontAwesomeIcon icon={faEnvelope} /></a>
             </div>
           </div>
         </footer>
-
       </main>
     </div>
   );
