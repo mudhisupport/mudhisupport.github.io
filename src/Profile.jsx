@@ -13,7 +13,6 @@ import {
   faFlask,
   faFolder,
   faLocationDot,
-  faLaptopCode,
   faMoon,
   faPaperPlane,
   faPen,
@@ -24,7 +23,6 @@ import {
   faGithub,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
-import { Sprout } from "lucide-react";
 import javaLogo from "devicon/icons/java/java-plain.svg";
 import springLogo from "devicon/icons/spring/spring-original.svg";
 import postgresqlLogo from "devicon/icons/postgresql/postgresql-plain.svg";
@@ -111,11 +109,6 @@ export default function Portfolio() {
 
         <section id="about" className="section about-section">
           <div className="about-card">
-            <div className="about-art" aria-hidden="true">
-              <FontAwesomeIcon className="about-laptop" icon={faLaptopCode} />
-              <Sprout className="plant" size={43} strokeWidth={1.7} />
-              <span className="art-code">&lt;/&gt;</span>
-            </div>
             <div className="about-copy">
               <div className="eyebrow"><i /> GET TO KNOW ME</div>
               <h2>About Me</h2>

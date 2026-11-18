@@ -61,13 +61,8 @@ button { font: inherit; }
 
 .section { width: 100%; }
 .about-section { background: #fbfcfe; padding: clamp(24px, 2.8vw, 35px) 0; }
-.about-card { width: min(1216px, calc(100% - 48px)); height: clamp(185px, 21.7vw, 271px); margin: auto; border: 1px solid #edf0f5; border-radius: 11px; background: #fdfdfe; display: grid; grid-template-columns: 31% 37% 32%; align-items: center; overflow: hidden; }
-.about-art { height: 100%; position: relative; display: grid; place-items: center; color: #1e6ed8; }
-.about-art svg:first-child { filter: drop-shadow(0 10px 8px rgba(30,110,216,.12)); }
-.about-art .about-laptop { width: 132px; height: 132px; }
-.about-art .plant { position: absolute; right: 43px; bottom: 76px; color: #2aa05a; }
-.art-code { position: absolute; left: 122px; top: 125px; color: #fff; font-size: 33px; font-weight: 900; letter-spacing: -4px; }
-.about-copy { padding-right: 26px; }
+.about-card { width: min(1216px, calc(100% - 48px)); height: clamp(185px, 21.7vw, 271px); margin: auto; border: 1px solid #edf0f5; border-radius: 11px; background: #fdfdfe; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; overflow: hidden; }
+.about-copy { padding: 0 32px; }
 .eyebrow { color: #2872e4; font-size: 12px; line-height: 1; font-weight: 850; display: flex; align-items: center; gap: 7px; }
 .eyebrow i { width: 25px; height: 2px; background: #2872e4; }
 .about-copy h2 { margin: 10px 0; font-size: clamp(28px, 2.88vw, 36px); letter-spacing: -1.5px; line-height: 1; }
@@ -147,9 +142,8 @@ footer { height: clamp(64px, 6.24vw, 78px); margin-top: auto; background: #fff; 
   .hero-visual { position: absolute; right: 0; bottom: 0; width: 45%; height: 300px; opacity: .35; pointer-events: none; }
   .hero-profile { width: min(280px, 100%); height: 300px; right: 0; }
   .hero h1 { font-size: clamp(34px, 5vw, 38px); }
-  .about-card { height: auto; grid-template-columns: minmax(160px, .8fr) 1.2fr; padding: 24px 0; }
-  .about-art { min-height: 180px; }
-  .about-copy { padding: 0 24px; }
+  .about-card { height: auto; grid-template-columns: minmax(0, 1fr); padding: 24px 0; }
+  .about-copy { padding: 0 24px 20px; }
   .about-list { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; height: auto; padding: 20px 24px 0; border: 0; border-top: 1px solid #dce5f4; }
   .project-grid { height: auto; grid-template-columns: 1fr; gap: 20px; padding: 30px 0; }
   .project-card { width: 100%; }
@@ -162,21 +156,18 @@ footer { height: clamp(64px, 6.24vw, 78px); margin-top: auto; background: #fff; 
   .brand { font-size: 18px; }
   .theme-toggle { width: 54px; height: 44px; }
   .mobile-nav { padding: 16px; }
-  .hero, .hero-inner { min-height: 660px; }
+  .hero { min-height: 0; }
+  .hero-inner { display: flex; flex-direction: column; min-height: 0; }
   .hero-copy { position: relative; z-index: 5; max-width: none; padding-top: 32px; }
   .hero h1 { font-size: clamp(30px, 8.5vw, 34px); letter-spacing: -1.3px; }
   .hero-subtitle { font-size: 14px; line-height: 1.5; }
   .hero-buttons { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 270px; }
   .button { width: 100%; max-width: 270px; }
-  .hero-visual { width: 58%; height: 230px; opacity: 1; pointer-events: none; }
-  .hero-profile { width: min(190px, 100%); height: 230px; }
+  .hero-visual { position: relative; right: auto; bottom: auto; align-self: stretch; width: 100%; height: 250px; margin-top: 24px; opacity: 1; pointer-events: none; }
+  .hero-profile { width: 100%; height: 100%; right: 0; bottom: 0; }
   .skill-row { gap: 10px 14px; flex-wrap: wrap; margin-top: 20px; }
   .about-section { padding: 20px 0; }
   .about-card { grid-template-columns: minmax(0, 1fr); padding: 0; }
-  .about-art { display: grid; min-height: 130px; height: 130px; }
-  .about-art .about-laptop { width: 82px; height: 82px; }
-  .about-art .plant { right: calc(50% - 68px); bottom: 23px; width: 30px; height: 30px; }
-  .art-code { left: calc(50% - 48px); top: 67px; font-size: 24px; }
   .about-copy { padding: 22px 20px 12px; }
   .about-list { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 8px 20px 22px; border: 0; }
   .about-item { grid-template-columns: 38px minmax(0, 1fr); }
