@@ -10,11 +10,11 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background: #f8fafc; }
+body { margin: 0; background: #f8fafc; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 
-.site { min-height: 100vh; overflow-x: clip; background: #fff; color: #111827; }
+.site { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; overflow-x: clip; background: #fff; color: #111827; }
 .topbar { height: clamp(64px, 6.24vw, 78px); border-bottom: 1px solid #edf0f5; background: rgba(255,255,255,.97); position: relative; z-index: 20; }
 .nav-inner { width: min(1216px, calc(100% - 48px)); height: 100%; margin: auto; display: flex; align-items: center; }
 .brand { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 800; letter-spacing: -.7px; }
@@ -120,7 +120,7 @@ button { font: inherit; }
 .plane-trail path { fill: none; stroke: #4a83e7; stroke-width: 1.8; stroke-dasharray: 4 7; stroke-linecap: round; }
 .rays { position: absolute; right: max(7%, calc((100% - 1240px) / 2)); top: 56px; width: 72px; height: 72px; fill: none; stroke: #cddbf4; stroke-width: 7; stroke-linecap: round; }
 
-footer { height: clamp(64px, 6.24vw, 78px); background: #fff; border-top: 1px solid #edf0f5; }
+footer { height: clamp(64px, 6.24vw, 78px); margin-top: auto; background: #fff; border-top: 1px solid #edf0f5; }
 .footer-inner { width: min(1216px, calc(100% - 48px)); height: 100%; margin: auto; display: flex; align-items: center; justify-content: space-between; }
 .footer-inner p { margin: 0; font-size: 12px; color: #5b6574; }
 .socials { display: flex; gap: 18px; align-items: center; }
@@ -162,18 +162,21 @@ footer { height: clamp(64px, 6.24vw, 78px); background: #fff; border-top: 1px so
   .brand { font-size: 18px; }
   .theme-toggle { width: 54px; height: 44px; }
   .mobile-nav { padding: 16px; }
-  .hero, .hero-inner { min-height: 620px; }
+  .hero, .hero-inner { min-height: 660px; }
   .hero-copy { position: relative; z-index: 5; max-width: none; padding-top: 32px; }
   .hero h1 { font-size: clamp(30px, 8.5vw, 34px); letter-spacing: -1.3px; }
   .hero-subtitle { font-size: 14px; line-height: 1.5; }
   .hero-buttons { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 270px; }
   .button { width: 100%; max-width: 270px; }
-  .hero-visual { width: 58%; height: 230px; opacity: .16; }
+  .hero-visual { width: 58%; height: 230px; opacity: 1; pointer-events: none; }
   .hero-profile { width: min(190px, 100%); height: 230px; }
   .skill-row { gap: 10px 14px; flex-wrap: wrap; margin-top: 20px; }
   .about-section { padding: 20px 0; }
   .about-card { grid-template-columns: minmax(0, 1fr); padding: 0; }
-  .about-art { display: none; }
+  .about-art { display: grid; min-height: 130px; height: 130px; }
+  .about-art .about-laptop { width: 82px; height: 82px; }
+  .about-art .plant { right: calc(50% - 68px); bottom: 23px; width: 30px; height: 30px; }
+  .art-code { left: calc(50% - 48px); top: 67px; font-size: 24px; }
   .about-copy { padding: 22px 20px 12px; }
   .about-list { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 8px 20px 22px; border: 0; }
   .about-item { grid-template-columns: 38px minmax(0, 1fr); }
@@ -185,7 +188,9 @@ footer { height: clamp(64px, 6.24vw, 78px); background: #fff; border-top: 1px so
   .project-details p { overflow-wrap: anywhere; }
   .tags, .project-links { flex-wrap: wrap; }
   .project-links a { min-height: 34px; height: auto; padding: 0 10px; font-size: 10.5px; }
-  .project-art { display: none; }
+  .project-art { position: static; grid-column: 1 / -1; display: flex; justify-content: flex-end; align-items: center; gap: 0; margin-top: -4px; transform: none; }
+  .project-art svg:first-child { width: 34px; height: 34px; }
+  .project-art svg:last-child { width: 50px; height: 50px; margin: -7px 4px 0 -7px; }
   .blog-card { height: auto; min-height: 190px; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: start; padding: 20px 16px 58px; }
   .blog-icon { width: 64px; height: 64px; border-radius: 20px; }
   .blog-icon svg { width: 36px; height: 36px; }
@@ -199,7 +204,7 @@ footer { height: clamp(64px, 6.24vw, 78px); background: #fff; border-top: 1px so
   .contact-copy h2 { font-size: clamp(26px, 7vw, 32px); }
   .contact-copy p { font-size: 13px; overflow-wrap: anywhere; }
   .plane-art { width: 36px; height: 36px; left: 8px; top: 16px; opacity: .18; }
-  .plane-trail { display: none; }
+  .plane-trail { display: block; left: 8px; top: 24px; width: 72px; height: 58px; opacity: .3; }
   .rays { right: 8px; top: 12px; width: 42px; height: 42px; opacity: .55; }
   footer { height: auto; min-height: 70px; padding: 14px 0; }
   .footer-inner { align-items: center; gap: 12px; }
