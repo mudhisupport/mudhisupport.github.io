@@ -60,9 +60,8 @@ export default function Portfolio() {
 
             <div className="nav-actions">
               <span className="theme-divider" />
-              <button className="theme-toggle" aria-label="Toggle theme" onClick={() => setDark(!dark)}>
-                <FontAwesomeIcon icon={faSun} className="sun" />
-                <FontAwesomeIcon icon={faMoon} className="moon" />
+              <button className="theme-toggle" aria-label="Toggle theme" aria-pressed={dark} onClick={() => setDark(!dark)}>
+                <FontAwesomeIcon icon={dark ? faSun : faMoon} className={dark ? "sun" : "moon"} />
               </button>
               <button className="menu-button" aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}>
                 <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
@@ -82,7 +81,7 @@ export default function Portfolio() {
           <div className="hero-inner">
             <div className="hero-copy">
               <div className="availability"><i /> Available for internships</div>
-              <h1>Hi, I'm <span>Mudhihir JZ</span><br />Backend Developer to Come.</h1>
+              <h1>Hi, I'm <span>Mudhihir JZ</span><br />Aspiring Backend Developer.</h1>
               <p className="hero-subtitle">Currently learning Spring Boot <b>•</b> Java <b>•</b> PostgreSQL</p>
               <div className="hero-buttons">
                 <a className="button primary" href="#projects"><FontAwesomeIcon icon={faFolder} /> View Projects <FontAwesomeIcon icon={faArrowRight} /></a>
@@ -148,8 +147,8 @@ export default function Portfolio() {
                   <span><img src={dockerLogo} alt="" />Docker</span>
                 </div>
                 <div className="project-links">
-                  <a href="https://github.com/mudhihirjz" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFolder} /> View on GitHub</a>
-                  <a href="#about">Learn More <FontAwesomeIcon icon={faArrowRight} /></a>
+                  <a href="https://github.com/mudhihirjz/mudhihirjz.github.io" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFolder} /> View on GitHub</a>
+                  <a href="https://github.com/mudhihirjz/mudhihirjz.github.io#readme" target="_blank" rel="noreferrer">Project README <FontAwesomeIcon icon={faArrowRight} /></a>
                 </div>
               </div>
               <div className="project-art" aria-hidden="true">
@@ -193,12 +192,12 @@ export default function Portfolio() {
 
         <footer>
           <div className="footer-inner">
-            <p>© 2024 Mudhihir JZ · Built with Java &amp; Spring Boot</p>
+            <p>© {new Date().getFullYear()} Mudhihir JZ · Built with React &amp; Vite</p>
             <div className="socials">
               <a href="https://github.com/mudhihirjz" aria-label="GitHub">
                 <FontAwesomeIcon icon={faGithub} />
               </a>
-              <a href="https://linkedin.com" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/mudhihir-jz-a91ab83aa/" aria-label="LinkedIn">
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
               <a href="mailto:mudhisupport@gmail.com" aria-label="Email"><FontAwesomeIcon icon={faEnvelope} /></a>
